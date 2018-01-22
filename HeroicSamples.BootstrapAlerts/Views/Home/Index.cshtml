@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div>
+    <h2>Heroic Bootstrap Alerts</h2>
+    <p>
+        This sample shows one technique of combining Bootstrap Alerts with ASP.NET Core. You can read more about the technique
+        at <a target="_blank" href="https://trycatchfail.com">try-catch-FAIL</a>.
+    </p>
+</div>
+
+<div>
+    <p class="lead">Examples</p>
+    <p>You can show an alert off a view result like so:</p>
+    <pre>public IActionResult About()
+{
+    ViewData["Message"] = "Your application description page.";
+
+    return View().WithSuccess("It worked!", "You were able to view the about page, congrats!");
+}</pre>
+    <p><a href="/home/about">Try it</a></p>
+
+    <p>You can also show an alert off a redirect result:</p>
+    <pre>public IActionResult GoHome()
+{
+    return RedirectToAction("Index").WithWarning("You were redirected!", "The action you hit has bounced you back to Index!");
+}</pre>
+    <p><a href="/home/gohome">Try it</a></p>
+</div>
+
