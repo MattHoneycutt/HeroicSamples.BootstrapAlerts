@@ -22,14 +22,33 @@ namespace HeroicSamples.BootstrapAlerts.Extensions.Alerts
 
         public async Task ExecuteResultAsync(ActionContext context)
         {
+            if (Result is StatusCodeResult || Result is OkObjectResult)
+            {
+                AddAlertMessageToApiResult(context);
+            }
+            else
+            {
+                AddAlertMessageToMvcResult(context);
+            }
+
+            await Result.ExecuteResultAsync(context);
+        }
+
+        private void AddAlertMessageToApiResult(ActionContext context)
+        {
+            context.HttpContext.Response.Headers.Add("x-alert-type", Type);
+            context.HttpContext.Response.Headers.Add("x-alert-title", Title);
+            context.HttpContext.Response.Headers.Add("x-alert-body", Body);
+        }
+
+        private void AddAlertMessageToMvcResult(ActionContext context)
+        {
             var factory = context.HttpContext.RequestServices.GetService<ITempDataDictionaryFactory>();
 
             var tempData = factory.GetTempData(context.HttpContext);
             tempData["_alert.type"] = Type;
             tempData["_alert.title"] = Title;
             tempData["_alert.body"] = Body;
-
-            await Result.ExecuteResultAsync(context);
         }
     }
 }

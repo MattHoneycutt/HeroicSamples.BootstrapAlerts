@@ -10,8 +10,10 @@
     </p>
 </div>
 
-<div>
-    <p class="lead">Examples</p>
+<h3 class="margin-bottom">Examples</h3>
+
+<div class="margin-bottom">
+    <h4>View Result</h4>
     <p>You can show an alert off a view result like so:</p>
     <pre>public IActionResult About()
 {
@@ -20,12 +22,26 @@
     return View().WithSuccess("It worked!", "You were able to view the about page, congrats!");
 }</pre>
     <p><a href="/home/about">Try it</a></p>
+</div>
 
+<div class="margin-bottom">
+    <h4>Redirect Result</h4>
     <p>You can also show an alert off a redirect result:</p>
     <pre>public IActionResult GoHome()
 {
     return RedirectToAction("Index").WithWarning("You were redirected!", "The action you hit has bounced you back to Index!");
 }</pre>
     <p><a href="/home/gohome">Try it</a></p>
+</div>
+
+<div class="margin-bottom">
+    <h4>API Result</h4>
+    <p>Returning data from a Web API action? You can add a status message to that, too!</p>
+    <pre>public IActionResult GetWidget()
+{
+    return Ok(new Widget { Name = "Test Widget"}).WithSuccess("Widget Retrieved!", "This is the widget you are looking for!");
+}</pre>
+    <p><a href="/home/apidemo">Try it</a></p>
+
 </div>
 

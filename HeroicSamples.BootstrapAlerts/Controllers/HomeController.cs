@@ -36,5 +36,10 @@ namespace HeroicSamples.BootstrapAlerts.Controllers
         {
             return RedirectToAction("Index").WithWarning("You were redirected!", "The action you hit has bounced you back to Index!");
         }
+
+        public IActionResult ApiDemo()
+        {
+            return View();
+        }
     }
 }

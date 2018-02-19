@@ -22,3 +22,12 @@ public IActionResult GoHome()
     return RedirectToAction("Index").WithWarning("You were redirected!", "The action you hit has bounced you back to Index!");
 }
 ```
+
+API results are supported, too:
+
+```cs
+public IActionResult Success()
+{
+    return Ok(DateTime.UtcNow.ToString()).WithSuccess("Success!", "The API call worked!");
+}
+```
